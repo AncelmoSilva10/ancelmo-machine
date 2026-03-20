@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancelmo's Machine</title>
+</head>
+
+<body>
+    <center>
+        <section class="found">
+            <h1>Ancelmo's Machine</h1>
+
+
+            <section class="left-section">
+
+                <div class="readings">
+                    <h3>Digite um número Decimal:</h3>
+                    <input id="ipt_decimal" type="text" placeholder="Ex: 42">
+                </div>
+
+                <div class="readings">
+                    <h3>Digite um número Octal:</h3>
+                    <input id="ipt_octal" type="text" placeholder="Ex: 42">
+                </div>
+
+                <div class="readings">
+                    <h3>Digite um número Binário:</h3>
+                    <input id="ipt_binario" type="text" placeholder="Ex: 42">
+                </div>
+
+                <div class="readings">
+                    <h3>Digite um número Hexadecimal:</h3>
+                    <input id="ipt_hexa" type="text" placeholder="Ex: 42">
+                </div>
+
+                <button onclick="converter()">Converter</button>
+
+            </section>
+            
+            <section class="right-section">
+
+                <h3>Resultados:</h3>
+                <p>Octal:
+                <div id="demo2"></div>
+                </p>
+                <p>Hexadecimal:
+                <div id="demo3"></div>
+                </p>
+                <p>Binário:
+                <div id="demo4"></div>
+                </p>
+                <p>Decimal:
+                <div id="demo5"></div>
+                </p>
+                
+                <div id="exibirAviso"></div>
+
+            </section>
+        </section>
+        
+    </center>
+
+    <script>
+        function converter() {
+        var decimal = Number(ipt_decimal.value);
+        var octal = Number(ipt_octal.value);
+        var binario = Number(ipt_binario.value);
+        var hexadecimal = ipt_hexa.value;
+
+
+        const regexBinario = new RegExp("^[01]+$");
+        const regexOctal = new RegExp("^[0-7]+$"); 
+        const regexDecimal = new RegExp("^[0-9]+$");
+        const regexHexa = new RegExp("^[0-9A-Fa-f]+$");
+
+            
+        let verificarBinario = regexBinario.test(binario);
+        let verificarOctal = regexOctal.test(octal);
+        let verificarDecimal = regexDecimal.test(decimal);
+        let verificarHexadecimal = regexHexa.test(hexadecimal);      
+
+        if(decimal != "" &&octal == "" && binario == "" && hexadecimal == ""){
+
+            if(verificarDecimal){
+
+                demo2.innerHTML = decimal.toString(8);
+                demo3.innerHTML = decimal.toString(16);
+                demo4.innerHTML = decimal.toString(2);
+                demo5.innerHTML = decimal;
+
+            }else{
+                exibirAviso.innerHTML = `Insira um número Decimal Válido!`;
+            }
+
+           
+            }else if(octal != "" && decimal == "" && binario == "" && hexadecimal == ""){
+
+
+                if(verificarOctal){
+
+                let decimalTransformado = parseInt(octal, 8);
+
+                demo2.innerHTML = octal;
+                demo3.innerHTML = decimalTransformado.toString(16);
+                demo4.innerHTML = decimalTransformado.toString(2);
+                demo5.innerHTML = decimalTransformado;
+
+                }else{
+                exibirAviso.innerHTML = `Insira um número Octal Válido!`;
+                }
+               
+
+            }else if(binario != "" && decimal == "" && hexadecimal == "" && octal == ""){
+
+                if(verificarBinario){
+
+                let decimalTransformado = parseInt(binario, 2);
+
+                demo2.innerHTML = decimalTransformado.toString(8);
+                demo3.innerHTML = decimalTransformado.toString(16);
+                demo4.innerHTML = binario;
+                demo5.innerHTML = decimalTransformado;
+
+                }else{
+                exibirAviso.innerHTML = `Insira um número Binário Válido!`;
+                }
+
+              
+
+            }else if(hexadecimal !="" && binario == "" && decimal == "" && octal == ""){
+
+                if(verificarHexadecimal){
+
+                let decimalTransformado = parseInt(hexadecimal, 16);
+
+                demo2.innerHTML = decimalTransformado.toString(8);
+                demo3.innerHTML = hexadecimal;
+                demo4.innerHTML = decimalTransformado.toString(2);
+                demo5.innerHTML = decimalTransformado;
+
+                }else{
+                    exibirAviso.innerHTML = `Insira um número Hexadecimal Válido!`;
+                }
+
+            }else if(hexadecimal =="" && binario == "" && decimal == "" && octal == ""){
+                exibirAviso.innerHTML = `Insira um valor para ser convertido!`;
+            }else{
+                exibirAviso.innerHTML = `Apenas preencha um campo por vez para conversão, deixando os outros vazios!`;
+            }
+
+        
+        }
+    </script>
+</body>
+</html>
+
+<style>
+   
+</style>
