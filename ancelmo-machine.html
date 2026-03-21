@@ -5,62 +5,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ancelmo's Machine</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="styles/style.css">
+
 </head>
 
 <body>
-    <center>
-        <section class="found">
-            <h1>Ancelmo's Machine</h1>
+
+       
+    <img id="img-title" src="assets/title.png" alt="">
 
 
-            <section class="left-section">
+    <div class="custom-ascii">
+        <a href="ascii-machine.html"><button>Tabela ASCII</button></a>
+    </div>
+    
 
-                <div class="readings">
-                    <h3>Digite um número Decimal:</h3>
-                    <input id="ipt_decimal" type="text" placeholder="Ex: 42">
-                </div>
-
+            <section class="background">
+                <section class="left-section">
+                    
+                    <h2 id="h2-number" class="cursor typewriter-animation">Insira o número respectivo!</h2>
+                    
+                    <div class="readings">
+                        <h3>Digite um número Decimal:</h3>
+                        <input id="ipt_decimal" type="text" placeholder="Ex: 42">
+                    </div>
+                    
                 <div class="readings">
                     <h3>Digite um número Octal:</h3>
-                    <input id="ipt_octal" type="text" placeholder="Ex: 42">
+                    <input id="ipt_octal" type="text" placeholder="Ex: 142">
                 </div>
-
+                
                 <div class="readings">
                     <h3>Digite um número Binário:</h3>
-                    <input id="ipt_binario" type="text" placeholder="Ex: 42">
+                    <input id="ipt_binario" type="text" placeholder="Ex: 101">
                 </div>
 
                 <div class="readings">
                     <h3>Digite um número Hexadecimal:</h3>
-                    <input id="ipt_hexa" type="text" placeholder="Ex: 42">
+                    <input id="ipt_hexa" type="text" placeholder="Ex: 1F">
                 </div>
-
+                
                 <button onclick="converter()">Converter</button>
-
+                
             </section>
             
             <section class="right-section">
-
-                <h3>Resultados:</h3>
-                <p>Octal:
-                <div id="demo2"></div>
-                </p>
-                <p>Hexadecimal:
-                <div id="demo3"></div>
-                </p>
-                <p>Binário:
-                <div id="demo4"></div>
-                </p>
-                <p>Decimal:
-                <div id="demo5"></div>
-                </p>
                 
-                <div id="exibirAviso"></div>
-
+                <h3 class="cursor typewriter-animation" id="result">Resultados:</h3>
+                
+                <div class="result-div" id="demo2"></div>
+                
+                
+                <div class="result-div" id="demo3"></div>
+                
+                
+                <div class="result-div" id="demo4"></div>
+                    
+                
+                <div class="result-div" id="demo5"></div>
+                
+                
+                <div class="result-div" id="exibirAviso"></div>
+                
+                <button onclick="limpar()">Limpar</button>
             </section>
         </section>
+
+    <h2><a class="dev" href="https://github.com/AncelmoSilva10/ancelmo-machine">Desenvolvido por: Ancelmo Silva de Sousa<i class="fa-brands fa-github"></i></a></h2>
         
-    </center>
+
 
     <script>
         function converter() {
@@ -85,10 +101,10 @@
 
             if(verificarDecimal){
 
-                demo2.innerHTML = decimal.toString(8);
-                demo3.innerHTML = decimal.toString(16);
-                demo4.innerHTML = decimal.toString(2);
-                demo5.innerHTML = decimal;
+               demo2.innerHTML = `O número ${decimal} em <b>OCTAL</b> é ${decimal.toString(8)}`;
+               demo3.innerHTML = `O número ${decimal} em <b>HEXADECIMAL</b> é ${decimal.toString(16).toUpperCase()}`;
+                demo4.innerHTML = `O número ${decimal} em <b>BINÁRIO</b> é ${decimal.toString(2)}`;
+                demo5.innerHTML = `O número ${decimal} em <b>DECIMAL</b> é ${decimal}`;
 
             }else{
                 exibirAviso.innerHTML = `Insira um número Decimal Válido!`;
@@ -102,10 +118,10 @@
 
                 let decimalTransformado = parseInt(octal, 8);
 
-                demo2.innerHTML = octal;
-                demo3.innerHTML = decimalTransformado.toString(16);
-                demo4.innerHTML = decimalTransformado.toString(2);
-                demo5.innerHTML = decimalTransformado;
+                demo2.innerHTML = `O número em <b>OCTAL</b> é ${octal}`;
+                demo3.innerHTML = `O número ${decimalTransformado} em <b>HEXADECIMAL</b> é ${decimalTransformado.toString(16).toUpperCase()}`;
+                demo4.innerHTML = `O número ${decimalTransformado} em <b>BINÁRIO</b> é ${decimalTransformado.toString(2)}`;
+                demo5.innerHTML = `O número em <b>DECIMAL</b> é ${decimalTransformado}`;
 
                 }else{
                 exibirAviso.innerHTML = `Insira um número Octal Válido!`;
@@ -118,10 +134,10 @@
 
                 let decimalTransformado = parseInt(binario, 2);
 
-                demo2.innerHTML = decimalTransformado.toString(8);
-                demo3.innerHTML = decimalTransformado.toString(16);
-                demo4.innerHTML = binario;
-                demo5.innerHTML = decimalTransformado;
+                demo2.innerHTML = `O número ${decimalTransformado} em <b>OCTAL</b> é ${decimalTransformado.toString(8)}`;
+                demo3.innerHTML = `O número ${decimalTransformado} em <b>HEXADECIMAL</b> é ${decimalTransformado.toString(16).toUpperCase()}`;
+                demo4.innerHTML = `O número em <b>BINÁRIO</b> é ${binario}`;
+                demo5.innerHTML = `O número em <b>DECIMAL</b> é ${decimalTransformado}`;
 
                 }else{
                 exibirAviso.innerHTML = `Insira um número Binário Válido!`;
@@ -135,10 +151,10 @@
 
                 let decimalTransformado = parseInt(hexadecimal, 16);
 
-                demo2.innerHTML = decimalTransformado.toString(8);
-                demo3.innerHTML = hexadecimal;
-                demo4.innerHTML = decimalTransformado.toString(2);
-                demo5.innerHTML = decimalTransformado;
+                demo2.innerHTML = `O número ${decimalTransformado} em <b>OCTAL</b> é ${decimalTransformado.toString(8)}`;
+                demo3.innerHTML = `O número em <b>HEXADECIMAL</b> é ${hexadecimal.toUpperCase()}`;
+                demo4.innerHTML = `O número ${decimalTransformado} em <b>BINÁRIO</b> é ${decimalTransformado.toString(2)}`;
+                demo5.innerHTML = `O número em <b>DECIMAL</b> é ${decimalTransformado}`;
 
                 }else{
                     exibirAviso.innerHTML = `Insira um número Hexadecimal Válido!`;
@@ -152,10 +168,22 @@
 
         
         }
+
+
+        function limpar(){
+
+            
+            ipt_binario.value = "";
+            ipt_octal.value = "";
+            ipt_decimal.value = "";
+            ipt_hexa.value = "";
+            demo2.innerHTML = "";
+            demo3.innerHTML = "";
+            demo4.innerHTML = "";
+            demo5.innerHTML = "";
+            exibirAviso.innerHTML = "";
+            
+        }
     </script>
 </body>
 </html>
-
-<style>
-   
-</style>

@@ -1,0 +1,182 @@
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+/*Configurações de Imagens, fonte do site, e alinhando onde vai ficar os elementos solto*/
+body{
+    height: 100%;
+    width: auto;
+    background: url(../assets/img-found.png);
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+
+/*Animação pronta pegada do https://prismic.io/blog/css-text-animations , para o h1*/
+/* Cursor */
+.cursor{
+    position: relative;
+    width: 24em;
+    margin: 0 auto;
+    border-right: 2px solid rgba(255,255,255,.75);
+    font-size: 30px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+/* Animation */
+.typewriter-animation {
+  animation: 
+    typewriter 5s steps(50) 1s 1 normal both, 
+    blinkingCursor 500ms steps(50) infinite normal;
+}
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blinkingCursor{
+  from { border-right-color: rgba(255,255,255,.75); }
+  to { border-right-color: transparent; }
+}
+
+
+
+/*Criação do Fundo onde vai ficar as 2 seções principais (A de inserir os dados e a outra de visualizar a conversão)*/
+.background{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+/*Definição de Tamanho do meu titulo, onde fiz uma imagem na IA*/
+#img-title{
+    width: 25%;
+    height: 25%;
+}
+
+
+/*Dando uma cor para os meus titulo, OBS: esse é os titulos com animações*/
+#h2-number{
+    color: #00FF9C;
+}
+
+
+/*Lado esquerdo onde estou lendo o valor inserido, já lado direito estou convertendo os valores, importante visualizar que esotu já determinando os tamanhos e suas posições, e suas particularidades, um pouco abaixo de forma individual*/
+.left-section,
+.right-section{
+    background-color: #0D1117;
+    width: 30em;
+    height: 40em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    border-radius: 20px;
+    
+    
+    z-index: 100;
+}
+
+.left-section{
+    margin: 5%;
+}
+
+
+.right-section{
+    position: relative;
+    
+}
+
+/*Dando um espaço entre os Inputs de leitura*/
+.readings{
+    margin: 6%;
+}
+
+/*Determinando o TAMANHO dos Inputs e seu design*/
+input{
+    width: 400px;
+    height: 35px;
+    border-radius: 10px;
+    border-width: 3px;
+    padding: 4px 8px 4px 8px;
+    border: none;
+    color: #002550;
+    
+}
+
+/*Customizando os botões, com tamanho, bordas, cor e tamanho das fontes internas*/
+section button{
+    width: 180px;
+    height: 50px;
+    border-radius: 10px;
+    border-width: 3px;
+    border: none;
+    background-color: #00FF9C;
+    color: #0D1117;
+    font-size: larger;
+    font-weight: bold;
+}
+
+/*Colocando um pouco de boniteza, com hover, ao passar o mouse em cima*/
+button:hover{
+    cursor: pointer; /*Aqui ao passar o mouse em cima, o cursos se transforma em uma mãozinha*/
+    scale: 1.05; /*Defino a escala de expansão então nesse caso coloquei para aumentar o tamanho, quando passar o cursor*/
+    box-shadow: 0px 6px 8px #58A6FF; /*Adicionando uma sombra, nas posições com px > 1*/
+    transition: all 250ms; /*Aqui é a velocidade da transição, que irá fazer esse Hover*/
+}
+
+/*Customizando aqui, adicionando um estilo a que foi eu que fiz, e o link do github*/
+.dev{
+    color: #58A6FF;
+    text-decoration: none;
+}
+
+/*Dando uma cor para os meus titulo, OBS: esse é os titulos com animações, mesma lógica, tive que usar o absolute para mover ele de forma individual, para colocar lá em cima, porque por padrão eu tinha alinhado todos os texto no centro do quadrado nesse caso direito*/
+#result{
+    color: #00FF9C;
+    position: absolute;
+    top: 7%;
+}
+
+/*Customizando como vai aparecer os resultados, tamanho, cor e seu espaçamento*/
+.result-div{
+    font-size: x-large;
+    margin: 6%;
+    color: #58A6FF;
+}
+
+/*Dando uma cor para os meus h3 dos inputs*/
+.readings h3{
+    color: #58A6FF;
+}
+
+.custom-ascii{
+    margin-left: 50%;
+}
+
+.custom-ascii button{
+    width: 180px;
+    height: 50px;
+    border-radius: 10px;
+    border-width: 3px;
+    border: none;
+    background-color: #00FF9C;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.custom-ascii button a{
+    text-decoration: none;
+    color: #0D1117;
+}

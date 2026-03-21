@@ -5,33 +5,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASCII Machine</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <link rel="stylesheet" href="styles/style.css">
        
 </head>
 
 <body>
-    <div id="container">
-        <h1>ASCII Machine</h1>
-        <input id="input_ascii" type="text" placeholder="Digite um caracter" maxlength="1">
-        <br><br>
-        <button onclick="converterCaracter()">Converter</button>
-        <div id="div_output"></div>
+
+    <img id="img-title" src="assets/title.png" alt="">
+
+
+    <div class="custom-ascii">
+        <a href="ancelmo-machine.html"><button >Voltar</button></a>
     </div>
+
+    <section class="background">
+                <section class="left-section">
+                    
+                    <h2 id="h2-number" class="cursor typewriter-animation">Insira o Caractere!</h2>
+                    
+                    <div class="readings">
+                        <h3>Digite um Caracter:</h3>
+                        <input id="input_ascii" type="text" placeholder="Digite um caracter" maxlength="1">
+                    </div>
+                
+                <button onclick="converterCaracter()">Converter</button>
+                
+            </section>
+
+            <section class="right-section">
+                
+                <h3 class="cursor typewriter-animation" id="result">Conversões da Tabela:</h3>
+                
+                <div class="result-div" id="demo2"></div>
+                
+                
+                <div class="result-div" id="demo3"></div>
+                
+                
+                <div class="result-div" id="demo4"></div>
+                    
+                
+                <div class="result-div" id="demo5"></div>
+
+                <div class="result-div" id="exibirAviso"></div>
+                
+                <button onclick="limpar()">Limpar</button>
+            </section>
+
+        </section>
+
+        <h2><a class="dev" href="https://github.com/AncelmoSilva10/ancelmo-machine">Desenvolvido por: Ancelmo Silva de Sousa<i class="fa-brands fa-github"></i></a></h2>
+
+
 </body>
 
 <script>
     function converterCaracter() {
 
-        div_output.innerHTML = '';
-
         var caractere = input_ascii.value;
         var decimal = caractere.charCodeAt();
 
-        div_output.style.display = 'block';
-
-        div_output.innerHTML += "<b>Decimal: </b>" + decimal + '<br>';
-        div_output.innerHTML += "<b>Binário: </b>" + decimal.toString(2) + '<br>';
-        div_output.innerHTML += "<b>Hexadecimal: </b>" + decimal.toString(16) + '<br>';
+        if(caractere == ""){
+            exibirAviso.innerHTML = `Insira um Caractere válido e não vaziu!`
+        }else{
+            demo2.innerHTML = `O caracter em <b>OCTAL</b> é ${decimal.toString(8)}`;
+            demo3.innerHTML = `O caracter em <b>HEXADECIMAL</b> é ${decimal.toString(16).toUpperCase()}`;
+            demo4.innerHTML = `O caracter em <b>BINÁRIO</b> é ${decimal.toString(2)}`;
+            demo5.innerHTML = `O caracter em <b>DECIMAL</b> é ${decimal}`;
+        }
     }
+
+    function limpar(){
+
+            
+            input_ascii.value = "";
+            demo2.innerHTML = "";
+            demo3.innerHTML = "";
+            demo4.innerHTML = "";
+            demo5.innerHTML = "";
+            exibirAviso.innerHTML = "";
+            
+        }
 </script>
 
 </html>
