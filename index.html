@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ancelmo's Machine</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <link rel="stylesheet" href="styles/style.css">
 
 </head>
@@ -85,22 +83,25 @@
         var binario = Number(ipt_binario.value);
         var hexadecimal = ipt_hexa.value;
 
-
+//Utilizado como parametro para saber se o número inserido está apto a ser, de acordo com a base
         const regexBinario = new RegExp("^[01]+$");
         const regexOctal = new RegExp("^[0-7]+$"); 
         const regexDecimal = new RegExp("^[0-9]+$");
         const regexHexa = new RegExp("^[0-9A-Fa-f]+$");
 
-            
+//Verfificando, cada variavel retorna em valores booleanos de true ou false, que utilizo nas condições
         let verificarBinario = regexBinario.test(binario);
         let verificarOctal = regexOctal.test(octal);
         let verificarDecimal = regexDecimal.test(decimal);
-        let verificarHexadecimal = regexHexa.test(hexadecimal);      
+        let verificarHexadecimal = regexHexa.test(hexadecimal);   
 
+//Validações do campos
         if(decimal != "" &&octal == "" && binario == "" && hexadecimal == ""){
 
+            //Utilizando as variaveis booleanas para verificar, se está correto
             if(verificarDecimal){
 
+            //Apresentações das conversões
                demo2.innerHTML = `O número ${decimal} em <b>OCTAL</b> é ${decimal.toString(8)}`;
                demo3.innerHTML = `O número ${decimal} em <b>HEXADECIMAL</b> é ${decimal.toString(16).toUpperCase()}`;
                 demo4.innerHTML = `O número ${decimal} em <b>BINÁRIO</b> é ${decimal.toString(2)}`;
@@ -169,7 +170,7 @@
         
         }
 
-
+//Função feita somente para limpar os campos, após clicar no botão limpar.
         function limpar(){
 
             
