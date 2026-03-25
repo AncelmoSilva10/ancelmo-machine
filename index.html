@@ -78,6 +78,8 @@
 
     <script>
         function converter() {
+        exibirAviso.innerHTML = "";
+
         var decimal = ipt_decimal.value;
         var octal = ipt_octal.value;
         var binario = ipt_binario.value;
@@ -101,11 +103,14 @@
             //Utilizando as variaveis booleanas para verificar, se está correto
             if(verificarDecimal){
 
-            //Apresentações das conversões
-               demo2.innerHTML = `O número ${decimal} em <b>OCTAL</b> é ${decimal.toString(8)}`;
-               demo3.innerHTML = `O número ${decimal} em <b>HEXADECIMAL</b> é ${decimal.toString(16).toUpperCase()}`;
-                demo4.innerHTML = `O número ${decimal} em <b>BINÁRIO</b> é ${decimal.toString(2)}`;
-                demo5.innerHTML = `O número ${decimal} em <b>DECIMAL</b> é ${decimal}`;
+        // Converte a string 'decimal' para um número real
+        let n = Number(decimal);
+
+        
+        demo2.innerHTML = `O número ${n} em <b>OCTAL</b> é ${n.toString(8)}`;
+        demo3.innerHTML = `O número ${n} em <b>HEXADECIMAL</b> é ${n.toString(16).toUpperCase()}`;
+        demo4.innerHTML = `O número ${n} em <b>BINÁRIO</b> é ${n.toString(2)}`;
+        demo5.innerHTML = `O número em <b>DECIMAL</b> é ${n}`;
 
             }else{
                 exibirAviso.innerHTML = `Insira um número Decimal Válido!`;
